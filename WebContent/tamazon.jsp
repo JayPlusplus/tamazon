@@ -11,12 +11,12 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title>Burgers....</title>
 <style>
-body {font-family: "Times New Roman", Georgia, Serif;}
-h1,h2,h3,h4,h5,h6 {
-    font-family: "Playfair Display";
-    letter-spacing: 5px;
-}
-</style>
+body {font-family: "Times New Roman", Georgia, Serif;} 
+h1,h2,h3,h4,h5,h6 { 
+  font-family: "Playfair Display"; 
+  letter-spacing: 5px; 
+ } 
+</style> 
 </head>
 <body>
 <div class="w3-top">
@@ -26,6 +26,7 @@ h1,h2,h3,h4,h5,h6 {
     <div class="w3-right w3-hide-small">
     
       <a href="login.jsp" class="w3-bar-item w3-button">Log in</a>
+      <a href="signUp.jsp" class="w3-bar-item w3-button">Sign Up</a>
       <a href="about.jsp" class="w3-bar-item w3-button">About</a>
       <a href="#menu" class="w3-bar-item w3-button">Menu</a>
       <a href="contactSection.jsp" class="w3-bar-item w3-button">Contact</a>
@@ -65,22 +66,22 @@ h1,h2,h3,h4,h5,h6 {
     <div class="w3-col l6 w3-padding-large">
       <h1 class="w3-center">Our Menu</h1><br>
       <h4>Bread Basket</h4>
-      <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
+      <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins</p><br>
     
       <h4>Honey Almond Granola with Fruits</h4>
-      <p class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
+      <p class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates</p><br>
     
       <h4>Belgian Waffle</h4>
-      <p class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
+      <p class="w3-text-grey">Vanilla flavored batter with malted flour</p><br>
     
       <h4>Scrambled eggs</h4>
-      <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
+      <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions</p><br>
     
       <h4>Blueberry Pancakes</h4>
-      <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p> 
+      <p class="w3-text-grey">With syrup, butter and lots of berries</p> 
       
       <h4>Oatmeal Surprise</h4>
-      <p class="w3-text-grey">With Dave's special recipe and homemade sauce 9.50</p>    
+      <p class="w3-text-grey">With Dave's special recipe and homemade sauce</p>    
     </div>
     
     <div class="w3-col l6 w3-padding-large">
@@ -91,29 +92,8 @@ h1,h2,h3,h4,h5,h6 {
   <hr>
 
   <!-- Contact Section -->
- <div class="w3-row w3-padding-64" id="menu">
-    <div class="w3-col l6 w3-padding-large">
-      <h1 class="w3-center">Our Menu</h1><br>
-      <h4>Bread Basket</h4>
-      <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
+<jsp:include page="contactSection.jsp"></jsp:include> 
 
-      <h4>Honey Almond Granola with Fruits</h4>
-      <p class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
-    
-      <h4>Belgian Waffle</h4>
-      <p class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
-    
-      <h4>Scrambled eggs</h4>
-      <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
-    
-      <h4>Blueberry Pancakes</h4>
-      <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>    
-    </div>
-    
-    <div class="w3-col l6 w3-padding-large">
-      <img src="pics//burger3.jpg" class="w3-round w3-image w3-opacity-min" alt="Menu" width="500" height="750">
-    </div>
-  </div>
 <!-- End page content -->
 </div>
 
@@ -122,7 +102,5 @@ h1,h2,h3,h4,h5,h6 {
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">Jay.css</a></p>
 </footer>
 
-</body>
-</html>
 </body>
 </html>

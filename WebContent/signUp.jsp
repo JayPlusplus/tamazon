@@ -9,11 +9,24 @@
 <title>-- Sign Up Page --</title>
 </head>
 <body>
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card-2" style="letter-spacing:4px;">
+    <a href="tamazon.jsp" class="w3-bar-item w3-button">Gourmet Dave's Catering</a>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+    
+      <a href="login.jsp" class="w3-bar-item w3-button">Log in</a>
+      <a href="signUp.jsp" class="w3-bar-item w3-button">Sign Up</a>
+      <a href="about.jsp" class="w3-bar-item w3-button">About</a>
+      <a href="contactSection.jsp" class="w3-bar-item w3-button">Contact</a>
+    </div>
+  </div>
+</div>
+
 <br/>
 <br/>
 <br/>
 <div align="center">
-<jsp:include page="navbar.jsp"></jsp:include>
 <form action = "AddUser" method="post">
 Username:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="username"><br/>
 	Password:&nbsp;<input type="password" name="password"><br/>

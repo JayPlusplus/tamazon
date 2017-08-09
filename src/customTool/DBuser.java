@@ -5,8 +5,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
-import Model.User;
 import customTool.DbUtil;
+import model.User;
 
 
 public class DBuser {
@@ -36,12 +36,12 @@ public class DBuser {
 		return result;
 
 	}
-	public static User getUser(int userID)
-	{
-		EntityManager em = DbUtil.getEmFactory().createEntityManager();
-		User user = em.find(User.class, userID);
-		return user; 
-	}
+//	public static User getUser(int userID)
+//	{
+//		EntityManager em = DbUtil.getEmFactory().createEntityManager();
+//		User user = em.find(User.class, userID);
+//		return user; 
+//	}
 	
 	public static User getUser(String username)
 	{
@@ -66,14 +66,35 @@ public class DBuser {
 		try {
 			trans.begin();
 			em.persist(p);
+			em.flush();
+			System.out.println("DbBullhorn: commit transaction");
 			trans.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			//System.out.println("DbBullhorn: rollback transaction");
+			System.out.println("DbBullhorn: rollback transaction");
 			trans.rollback();
 		} finally {
-			//System.out.println("DbBullhorn: close em");
+			System.out.println("DbBullhorn: close em");
 			em.close();
 		}
-}
+	}
+	public static User getUserByEmail(String email)
+	{
+		EntityManager em = DbUtil.getEmFactory().createEntityManager();
+		String qString = "Select u from User u "
+				+ "where u.useremail = :useremail";
+		TypedQuery<User> q = em.createQuery(qString, User.class);
+		q.setParameter("useremail", email);
+		User user = null;
+		try {
+			user = q.getSingleResult();
+		}catch (NoResultException e){
+			System.out.println(e);
+		}finally{
+			em.close();
+		}
+		return user;
+		
+	}
+
 }

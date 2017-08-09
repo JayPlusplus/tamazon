@@ -6,16 +6,17 @@ import java.util.List;
 
 
 /**
- * The persistent class for the products database table.
+ * The persistent class for the product database table.
  * 
  */
 @Entity
-@Table(name="products")
+@Table(name="product")
 @NamedQuery(name="Product.findAll", query="SELECT p FROM Product p")
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int productid;
 
 	private int productcount;

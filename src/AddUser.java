@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Model.User;
 import customTool.DBuser;
+import model.User;
 
 
 /**
@@ -43,16 +43,24 @@ public class AddUser extends HttpServlet {
 		String password = request.getParameter("password");
 		String email = request.getParameter("useremail");
 		String nextURL = "";
-		User u = new User();
 		
+		User u = DBuser.getUserByEmail(email);
 
 
-		u.setUseremail(email);
-		u.setUsername(username);
-		u.setUserpassword(password);
-		session.setAttribute("user", u);
-		DBuser.insert(u);
-		nextURL = "/logined.jsp";		
+		if (u == null){
+			u = new User();
+			u.setUsername(username);
+			u.setUseremail(email);
+			u.setUserpassword(password);
+			session.setAttribute("user", u);
+			DBuser.insert(u);
+			System.out.println("under insert method");
+			nextURL = "/logined.jsp";
+		}else{
+			String message = "You have an account - ";
+			request.setAttribute("message", message);
+			nextURL = "/login.jsp";
+};		
 			
 		getServletContext().getRequestDispatcher(nextURL).forward(request, response);
 	}

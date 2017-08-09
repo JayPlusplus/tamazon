@@ -8,9 +8,10 @@ import javax.persistence.TypedQuery;
 
 import customTool.DbUtil;
 import model.Cart;
+import model.Product;
 
 public class DBcart {
-	public static void insert(Cart ord) {
+		public static void insert(Product ord) {
 		EntityManager em = DbUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		try {
@@ -57,5 +58,20 @@ public class DBcart {
 	            }
 	        return productname;    
 	    }
-	    
+		public static List<Cart> listOfProducts (){
+			EntityManager em = DbUtil.getEmFactory().createEntityManager();
+			String qString = "select b from Product b";
+			List<Cart> products = null;
+			try{
+				TypedQuery<Cart> query = em.createQuery(qString,Cart.class);
+				products = query.getResultList();
+
+			}catch (Exception e){
+				e.printStackTrace();
+			}
+			finally{
+					em.close();
+				}
+			return products;
+		}
 }

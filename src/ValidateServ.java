@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Model.User;
 import customTool.DBproduct;
 import customTool.DBuser;
 import model.Product;
+import model.User;
 
 
 /**
@@ -58,7 +58,7 @@ public class ValidateServ extends HttpServlet {
 				User u = DBuser.getUser(username);
 				
 				List<Product> p = DBproduct.listOfProducts();
-				session.setAttribute("products", p);
+				session.setAttribute("product", p);
 				session.setAttribute("user", u);
 				
 				

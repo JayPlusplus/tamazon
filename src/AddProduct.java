@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import customTool.DBcart;
+import customTool.DBproduct;
 import model.Cart;
+import model.Product;
 
 /**
  * Servlet implementation class AddProduct
@@ -41,27 +44,23 @@ public class AddProduct extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		String Productid = request.getParameter("productid");
-
 		Integer productid = Integer.parseInt(request.getParameter("productid"));
 		Integer quantity = Integer.parseInt(request.getParameter("quant"));
-
-		Cart ord = new Cart();
-		ord.setQuantity(quantity);
-		ord.setUserid(3);
+		//List<Product> pro = new ArrayList();
+		String addToCart = "";
 		
-		DBcart.insert(ord);
-		//List<Cart> list = DBcart.cartList(session.getAttribute("user.username"));
+		if (addToCart.equals(request.getParameter("addToCart"))) {
+			Product pro = DBproduct.getProduct(productid);
+			System.out.println(pro);
+			//List<Cart> ord = new ArrayList();
+			
+			//ord.setQuantity(quantity);
+			DBcart.insert(pro);
+		//String car = session.getAttribute()
+			List<Cart> list = DBcart.listOfProducts();
+			session.setAttribute("list", list);
 		
-	//	session.setAttribute("list", list);
-		
-		//response.getWriter().append(cart.printProducts());
-        response.sendRedirect(request.getContextPath() + "/cart.jsp");
-		
-		
-		
-		session.setAttribute("order", ord);
-		DBcart.insert(ord);
+		}
 		
 		getServletContext().getRequestDispatcher("/menu.jsp").forward(request, response);
 	}

@@ -13,17 +13,23 @@ public class DBproduct {
 		public static List<Product> listOfProducts (){
 			EntityManager em = DbUtil.getEmFactory().createEntityManager();
 			String qString = "select b from Product b";
-			List<Product> posts = null;
+			List<Product> products = null;
 			try{
 				TypedQuery<Product> query = em.createQuery(qString,Product.class);
-				posts = query.getResultList();
-
+				products = query.getResultList();
+				//System.out.println("here in the try");
 			}catch (Exception e){
 				e.printStackTrace();
 			}
 			finally{
 					em.close();
 				}
-			return posts;
+			return products;
+		}
+		public static Product getProduct(int productID)
+		{
+			EntityManager em = DbUtil.getEmFactory().createEntityManager();
+			Product pro = em.find(Product.class, productID);
+			return pro; 
 		}
 }

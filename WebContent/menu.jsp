@@ -20,12 +20,18 @@ h1,h2,h3,h4,h5,h6 {
 </head>
 <body>
 <jsp:include page="navbar.jsp"></jsp:include> 
+<br />  <br />  <br />
+    <div class="w3-col l6 w3-padding-large">
+      <img src="pics//burger3.jpg" class="w3-round w3-image w3-opacity-min" alt="Menu" width="500" height="750">
+    </div>
  <div class="w3-row w3-padding-64" id="menu">
     <div class="w3-col l6 w3-padding-large">
-    <c:forEach var="product" items="${products}">
-      <h1 class="w3-center">Our Menu</h1><br>
-      <h4>${products.productname}</h4>
-      <p class="w3-text-grey">${products.productdescription}  ${products.productprice} </p><br>
+    <h1 class="w3-center">Our Menu</h1><br>
+    
+    <c:forEach var="product" items="${product}">
+      
+      <h4>${product.productname}</h4>
+      <p class="w3-text-grey">${product.productdescription}  ${product.productprice} </p><br>
       <form action="AddProduct" method="post">
       <select name="quant" class="btn btn-primary">
 
@@ -39,24 +45,20 @@ h1,h2,h3,h4,h5,h6 {
 						<option value="8">8</option>
 						<option value="9">9</option>
 					</select>
-                                <input type="submit" name="addToCart" value="Buy Now!">
+                                <input type="submit" name="addToCart" value="Add to cart">
                                 <input type="hidden" name="productid" value="${product.productid}">
                                 </form>
        </c:forEach>
-      
-    </div>
-    
-    <div class="w3-col l6 w3-padding-large">
-      <img src="pics//burger3.jpg" class="w3-round w3-image w3-opacity-min" alt="Menu" width="500" height="750">
-    </div>
-  </div>
-  
+       </div>
+ </div>   
+ <br />  <br />  <br />
+ <hr />
+
+   <br />  <br />  <br />   <br />  <br /> 
 <!-- Footer -->
 <footer class="w3-center w3-light-grey w3-padding-32">
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">Jay.css</a></p>
 </footer>
 
-</body>
-</html>
 </body>
 </html>
